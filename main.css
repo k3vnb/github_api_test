@@ -1,0 +1,33 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    position: relative;
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+main {
+    margin: 0 10%;
+}
+
+
+
+/* footer */
+footer {
+    color: black;
+   ;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    padding-right: 3%;
+    padding-bottom: 3%;
+    text-align: right;
+}
