@@ -14,12 +14,21 @@
         <h1>Fetching Github User Repos</h1>
     </header>
     <main id="content" role="main" tabindex="-1">
+        <form id="js-form">
+            <label for="search-term">Enter Github Handle to retrieve Repos</label>
+            <input type="text" name="search-term" id="js-search-term" value="lemurriot" required>
 
+            <input type="submit" value="Go!">
+        </form>
+        <div class="results">
+            
+        </div>
+        <p id="js-error-message" class="error-message"></p>
     </main>
     <footer role="contentinfo" class="site-footer">
             &copy; Kevin Boyle 2019
     </footer>
     
-    <script src="main.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

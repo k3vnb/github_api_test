@@ -15,6 +15,26 @@ header {
 
 main {
     margin: 0 10%;
+    padding: 10% 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=submit]{
+    background-color: #24b724;
+    height: 100px;
+    color: white;
+    font-size: 50px;
+    border-radius: 16px;
+    margin: 5%;
+    transition: .1s;
+}
+input[type=submit]:hover {
+    background-color: #00ff00;
+    cursor: pointer;
 }
 
 
