@@ -37,7 +37,9 @@ input[type=submit]:hover {
     cursor: pointer;
 }
 
-
+.results {
+    display: none;
+}
 
 /* footer */
 footer {

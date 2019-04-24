@@ -1,45 +1,49 @@
-function handleError(){
-    console.log('error');
+function handleError(err){
+    $('.results').append(err.message).show(5);
 }
 
 function renderGitRepos(responseJson){
-    console.log('res is ' + responseJson.length);
+    $('.results').show(5);
     responseJson.forEach(repo => {
-        console.log(repo.name)
-        console.log(repo.owner.html_url)
+        $('.results-ul').append(`<li><a href="${repo.html_url}" class="repo-link">${repo.name}</a></li>`)     
     })
 
 }
 
 
 function handleAPICall(searchTerm){   
-    fetch(`https://api.github.com/users/${searchTerm}/repos`)
+    fetch(`https://api.github.com/users/${searchTerm}/repos?sort=updated`)
     .then(response =>   {
         console.log(response)
         if (response.ok) {
             return response.json();
         } else {
-          throw new Error('Something went wrong');
+          throw new Error('Oops. Something went wrong! Maybe check the spelling of your requested Github user?');
         }
       })
-      .then(responseJson => renderGitRepos(responseJson))
+      .then(responseJson => {
+          renderGitRepos(responseJson)
+        })
       .catch(error => {
-          console.log(error);
-          handleError();
+          handleError(error);
     })
 }
 
-function resetField() {
-    $('.results').empty();
+function resetResultsField() {
+    $('.results').hide();
+    $('.results-ul').empty();
+  }
+function resetSearchField() {
     $('input[name="search-term"]').val('');
   }
 
 function onFormSubmit(){
     $('form').submit(() => {
         event.preventDefault();
+        resetResultsField();
         const searchTerm = $('input[name="search-term"]').val();
-        // resetField();
         handleAPICall(searchTerm);
+        resetSearchField();
     })
 }
 
